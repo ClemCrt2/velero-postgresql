@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgresql-integration
+  namespace: kube-argo-cd
+  labels:
+    app.kubernetes.io/name: postgresql
+  # Supprime toutes les ressources ArgoCD lors de la suppression de l'app
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: my-project
+  source:
+    # 🔧 Adaptez l'URL de votre dépôt Git
+    repoURL: XXXXXXXXXXXXXXXXXX
+    targetRevision: development
+    # Chemin vers le dossier contenant les manifests Kubernetes
+    path: postgresql-integration
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: postgresql-integration
+  syncPolicy:
+    automated:
+      # Supprime les ressources obsolètes dans le cluster
+      prune: true
+      # Corrige automatiquement les dérives manuelles
+      selfHeal: true
+    syncOptions:
+      # Crée le namespace s'il n'existe pas
+      - CreateNamespace=true
+      # Respecte les annotations ServerSideApply
+      - ServerSideApply=false
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
