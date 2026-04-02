@@ -176,7 +176,8 @@ kubectl delete namespace postgresql-integration
 
 * **Ceph‑CSI driver** – <https://github.com/ceph/ceph-csi>  
 * **Official PostgreSQL 18 docs** – <https://www.postgresql.org/docs/18/>  
-* **Velero – CSI volume backup** – <https://velero.io/docs/main/csi/>  
+* **Velero – CSI volume backup** – <https://velero.io/docs/main/csi/>
+* Cool site https://www.tigerdata.com/blog/its-2026-just-use-postgres
 
 ---  
 
