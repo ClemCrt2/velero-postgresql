@@ -1,6 +1,6 @@
 # 📦 velero‑postgresql‑lab  
 
-**Goal** – This repository demonstrates, step‑by‑step, how to back up a **PostgreSQL 18** database running on a Kubernetes cluster with **Velero**, and then ship those backups to an **S3** bucket (AWS, MinIO, or any S3‑compatible service).  
+**Goal** – This repository demonstrates, step‑by‑step, how to back up a **PostgreSQL 18** database running on a Kubernetes cluster with **Velero**, and then ship those backups to an **S3** bucket (AWS, MinIO, or any S3‑compatible service). It's include a prehook dump to ensure data integrity on a dedicated PVC 
 This lab is aimed at DevOps / SRE teams that want to:
 
 * provision a Kubernetes cluster with **Kubespray**  
@@ -54,7 +54,7 @@ This lab is aimed at DevOps / SRE teams that want to:
 | **Argo CD** (optional) | 2.8+ | If you want the GitOps part and installed Postgresql with it|
 | **Access to an S3 bucket** | Access‑key/secret‑key |
 
-> **Note**: The lab also works with a local S3‑compatible store (MinIO or CEPH) so you don’t need a real AWS account.  
+> **Note**: The lab was running on local S3‑compatible store CEPH S3 RGW
 
 ---
 
